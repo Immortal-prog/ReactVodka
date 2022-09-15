@@ -4,7 +4,7 @@ import { setDeletePizzas, setAddPizzas, minusItem } from '../redux/slices/CartSl
 
 function CartItem({ id, imageUrl, title, type, size, count, price }) {
   const dispatch = useDispatch();
-
+  console.log(id);
   const onClickPlus = () => {
     dispatch(
       setAddPizzas({
