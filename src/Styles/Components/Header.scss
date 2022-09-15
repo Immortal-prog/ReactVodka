@@ -1,0 +1,65 @@
+@import '../variables.scss';
+
+.header {
+    border-bottom: 1px solid $gray-line;
+    padding: 40px 0;
+   
+
+    
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 550px) {
+        flex-direction: column;
+        align-items: center;
+
+        .header__cart {
+          a {
+            margin-top: 20px;
+            margin-right: 0;
+          }
+          
+        }
+        
+      }
+    
+    }
+  
+    &__logo {
+        display: flex;
+
+      img {
+        margin: 0 17px 0 0;
+        width: 38px;
+        height: 38px;
+      }
+  
+      h1 {
+        color: #181818;
+        font-size: 24px;
+        letter-spacing: 1%;
+        text-transform: uppercase;
+        font-weight: 800;    
+      }
+  
+      p {
+        color: #7B7B7B;
+      }
+    }
+    &__cart {
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        margin-right: 20px;
+
+        b {
+          color: rgba(22, 21, 21, 0.49);
+        }
+
+      }
+      
+    }
+  }

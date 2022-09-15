@@ -1,0 +1,31 @@
+@import '../variables.scss';
+
+
+.categories {
+    ul {
+        display: flex;
+    }
+
+    li {
+        background-color: #F9F9F9;
+        border-radius: 30px;
+        margin-right: 10px;
+        padding: 13px 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+       
+        &:hover {
+            background-color: darken(#F9F9F9, 5%);
+        }
+
+        &:active {
+            background-color: darken(#F9F9F9, 15%);
+        }
+
+        &.active {
+            background-color: $black;
+            color: #fff;
+        }
+    }
+}
