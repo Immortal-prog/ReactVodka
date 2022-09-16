@@ -1,17 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAddPizzas, setActiveSize } from '../redux/slices/CartSlice';
+import { setAddPizzas } from '../redux/slices/CartSlice';
 
-function PizzaBlock({ items }) {
+function AlcoBlock({ items }) {
   const [activeType, setActiveType] = React.useState(0);
-  //const [activeSize, setActiveSize] = React.useState(0);
+  const [activeSize, setActiveSize] = React.useState(0);
   const dispatch = useDispatch();
 
   const typePizzas = ['звичайна', 'охолоджена'];
 
   const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
-
-  const { activeSize } = useSelector((state) => state.cartSlice);
 
   const adedCount = cartItem ? cartItem.count : 0;
 
@@ -77,4 +75,4 @@ function PizzaBlock({ items }) {
   );
 }
 
-export default PizzaBlock;
+export default AlcoBlock;

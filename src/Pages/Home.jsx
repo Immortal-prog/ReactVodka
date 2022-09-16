@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Categories from '../Components/Categoties';
 import Sort from '../Components/Sort';
-import PizzaBlock from '../Components/PizzaBlock';
+import AlcoBlock from '../Components/AlcoBlock';
 import PizzaBlockSkeleton from '../Components/PizzaBlockSkeleton';
 import Pagination from '../Components/Pagination';
 import { searchContext } from '../App';
@@ -122,7 +122,7 @@ function Home() {
     }
   }, []);
 
-  const pizzas = items.map((pizzas, index) => <PizzaBlock key={index} items={pizzas} />);
+  const pizzas = items.map((pizzas, index) => <AlcoBlock key={index} items={pizzas} />);
 
   const sceletons = [...new Array(8)].map((_, i) => <PizzaBlockSkeleton key={i} />);
 
