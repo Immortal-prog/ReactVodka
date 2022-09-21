@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setClearPizzas } from '../redux/slices/CartSlice';
+import { useSelector } from 'react-redux';
+//import { setClearPizzas } from '../redux/slices/CartSlice';
 import CartItem from '../Components/CartItem';
 import CartEmpty from './CartEmpty';
 
 function Cart() {
-  const dispatch = useDispatch();
   const { totalPrice, items } = useSelector((state) => state.cartSlice);
 
   const totalCount = items.reduce((count, obj) => {
@@ -15,7 +14,6 @@ function Cart() {
 
   const clearCart = () => {
     if (window.confirm('Очистити корзину?')) {
-      dispatch(setClearPizzas());
     }
   };
 

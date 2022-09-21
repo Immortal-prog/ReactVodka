@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAddPizzas } from '../redux/slices/CartSlice';
+import { useDispatch } from 'react-redux';
+//import { setAddItem } from '../redux/slices/CartSlice';
 
 function AlcoBlock({ items }) {
   const [activeType, setActiveType] = React.useState(0);
@@ -9,12 +9,14 @@ function AlcoBlock({ items }) {
 
   const typePizzas = ['звичайна', 'охолоджена'];
 
-  const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
+  //const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
 
-  const adedCount = cartItem ? cartItem.count : 0;
+  //const adedCount = cartItem ? cartItem.count : 0;
+
+  const adedCount = 0;
 
   const onClickAdd = () => {
-    const item = {
+    const items = {
       id: items.id,
       imageUrl: items.imageUrl,
       price: items.price,
@@ -22,7 +24,6 @@ function AlcoBlock({ items }) {
       type: typePizzas[activeType],
       size: items.sizes[activeSize],
     };
-    dispatch(setAddPizzas(item));
   };
 
   return (
