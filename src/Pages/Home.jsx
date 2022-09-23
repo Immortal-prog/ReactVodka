@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import qs from 'qs';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import Categories from '../Components/Categoties';
@@ -9,7 +8,6 @@ import Sort from '../Components/Sort';
 import AlcoBlock from '../Components/AlcoBlock';
 import PizzaBlockSkeleton from '../Components/PizzaBlockSkeleton';
 import Pagination from '../Components/Pagination';
-import { searchContext } from '../App';
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 import { axiosItems } from '../redux/slices/responceSlice';
 
@@ -22,18 +20,20 @@ const sortBy = [
 ];
 
 function Home() {
-  const { categoryId, sort, currentPage } = useSelector((state) => state.filterSlice);
+  const { categoryId, sort, currentPage, searchValue } = useSelector((state) => state.filterSlice);
+  const { alcoholItems, status } = useSelector((state) => state.responce);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
-  const { alcoholItems, status } = useSelector((state) => state.responce);
-
-  const { searchValue } = React.useContext(searchContext);
-
   const onClickCategory = (id) => {
     dispatch(setCategoryId(id));
+  };
+
+  const onChangePage = (currentPage) => {
+    dispatch(setCurrentPage(currentPage));
   };
 
   const getItems = async () => {
@@ -64,31 +64,26 @@ function Home() {
 
       navigate(`/?${queryString}`);
     }
-
-    if (!window.location.search) {
-      console.log(111);
-      fetchPizzas();
-    }
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   React.useEffect(() => {
-    getPizzas();
+    getItems();
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   // Парсим параметры при первом рендере
-  React.useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      const sort = sortList.find((obj) => obj.sortProperty === params.sortProperty);
-      if (sort) {
-        params.sort = sort;
-      }
-      dispatch(setFilters(params));
-    }
-    isMounted.current = true;
-  }, []);
+  // React.useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1));
+  //     const sort = sortList.find((obj) => obj.sortProperty === params.sortProperty);
+  //     if (sort) {
+  //       params.sort = sort;
+  //     }
+  //     dispatch(setFilters(params));
+  //   }
+  //   isMounted.current = true;
+  // }, []);
 
-  const pizzas = items.map((pizzas, index) => <AlcoBlock key={index} items={pizzas} />);
+  const pizzas = alcoholItems.map((pizzas, index) => <AlcoBlock key={index} items={pizzas} />);
 
   const sceletons = [...new Array(8)].map((_, i) => <PizzaBlockSkeleton key={i} />);
 
@@ -99,7 +94,12 @@ function Home() {
         <Sort sortPopup={sortBy} />
       </div>
       <h2 className="content__title">Надмірне споживання алкоголю шкодить вашому здоров'ю</h2>
-      <div className="content__items">{status === 'loading' ? sceletons : pizzas}</div>
+      {status === 'error' ? (
+        <div>Помилка при завантаженні</div>
+      ) : (
+        <div className="content__items">{status === 'loading' ? sceletons : pizzas}</div>
+      )}
+
       <Pagination currentPage={currentPage} onChangepage={onChangePage} />
     </div>
   );

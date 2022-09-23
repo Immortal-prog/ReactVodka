@@ -3,13 +3,13 @@ import axios from 'axios';
 
 export const axiosItems = createAsyncThunk('alcohol/fetchItemsStatus', async (params) => {
   const { order, search, category, sort, currentPage } = params;
-  const res = await axios.get(
+  const { data } = await axios.get(
     `https://62dd5df1ccdf9f7ec2c5f699.mockapi.io/pizzas?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProp.replace(
       '-',
       '',
     )}&order=${order}${search}`,
   );
-  return res.data;
+  return data;
 });
 
 const initialState = {
@@ -30,8 +30,9 @@ const alcoholItems = createSlice({
       state.status = 'loading';
       state.alcoholItems = [];
     },
-    [axiosItems.fulfilled]: (state) => {
+    [axiosItems.fulfilled]: (state, action) => {
       state.status = 'success';
+      state.alcoholItems = action.payload;
     },
     [axiosItems.rejected]: (state) => {
       state.status = 'error';
