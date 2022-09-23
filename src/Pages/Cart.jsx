@@ -8,9 +8,7 @@ import CartEmpty from './CartEmpty';
 function Cart() {
   const { totalPrice, items } = useSelector((state) => state.cartSlice);
 
-  const totalCount = items.reduce((count, obj) => {
-    return count + obj.count;
-  }, 0);
+  const totalCount = items.length;
 
   const clearCart = () => {
     if (window.confirm('Очистити корзину?')) {

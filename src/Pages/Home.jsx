@@ -40,7 +40,7 @@ function Home() {
     const order = `${sort.sortProp.includes('-') ? 'asc' : 'desc'}`;
     const search = searchValue ? `&search=${searchValue}` : '';
     const category = categoryId > 0 ? `category=${categoryId}` : '';
-
+    console.log(sort.sortProp);
     dispatch(
       axiosItems({
         order,
@@ -52,6 +52,7 @@ function Home() {
     );
     window.scrollTo(0, 0);
   };
+
   React.useEffect(() => {
     if (isMounted.current) {
       const params = {
@@ -63,6 +64,10 @@ function Home() {
       const queryString = qs.stringify(params, { skipNulls: true });
 
       navigate(`/?${queryString}`);
+    }
+
+    if (window.location.search) {
+      axiosItems();
     }
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 

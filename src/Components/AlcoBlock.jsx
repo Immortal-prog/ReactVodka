@@ -1,29 +1,27 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-//import { setAddItem } from '../redux/slices/CartSlice';
+import { setAddItems } from '../redux/slices/CartSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 function AlcoBlock({ items }) {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+  const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
   const dispatch = useDispatch();
+
+  const adedCount = cartItem ? cartItem.count : 0;
 
   const typePizzas = ['звичайна', 'охолоджена'];
 
-  //const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
-
-  //const adedCount = cartItem ? cartItem.count : 0;
-
-  const adedCount = 0;
-
   const onClickAdd = () => {
-    const items = {
+    const item = {
       id: items.id,
       imageUrl: items.imageUrl,
-      price: items.price,
+      price: items.price[activeSize],
       title: items.name,
       type: typePizzas[activeType],
       size: items.sizes[activeSize],
     };
+    dispatch(setAddItems(item));
   };
 
   return (
@@ -45,9 +43,9 @@ function AlcoBlock({ items }) {
           <ul>
             {items.sizes.map((size, i) => (
               <li
+                onClick={() => setActiveSize(i)}
                 className={activeSize === i ? 'active' : ''}
-                key={`${size}_${i}`}
-                onClick={() => dispatch(setActiveSize(i))}>
+                key={`${size}_${i}`}>
                 {size} л.
               </li>
             ))}
