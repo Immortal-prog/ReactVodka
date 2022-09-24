@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-//import { setClearPizzas } from '../redux/slices/CartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDeleteItemCart } from '../redux/slices/CartSlice';
 import CartItem from '../Components/CartItem';
 import CartEmpty from './CartEmpty';
 
 function Cart() {
   const { totalPrice, items } = useSelector((state) => state.cartSlice);
-
+  const dispatch = useDispatch();
   const totalCount = items.reduce((count, obj) => {
     return count + obj.count;
   }, 0);
 
-  const clearCart = () => {
+  const deleteCart = () => {
     if (window.confirm('Очистити корзину?')) {
+      dispatch(setDeleteItemCart());
     }
   };
 
@@ -93,7 +94,7 @@ function Cart() {
               />
             </svg>
 
-            <span onClick={clearCart}>Очистить корзину</span>
+            <span onClick={deleteCart}>Очистить корзину</span>
           </div>
         </div>
         <div className="content__items">
