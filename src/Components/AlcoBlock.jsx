@@ -5,12 +5,20 @@ import { useSelector, useDispatch } from 'react-redux';
 function AlcoBlock({ items }) {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
-  const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
+  //const cartItem = useSelector((state) => state.cartSlice.items.find((obj) => obj.id === items.id));
+
   const dispatch = useDispatch();
 
-  const adedCount = cartItem ? cartItem.count : 0;
+  const cartItems = useSelector((state) =>
+    state.cartSlice.items.filter((obj) => obj.id === items.id),
+  );
+  console.log(cartItems);
 
-  const typePizzas = ['звичайна', 'охолоджена'];
+  const adedCount = cartItems.reduce((sum, item) => sum + item.count, 0);
+
+  //const adedCount = cartItem ? cartItem.count : 0;
+
+  const typePizzas = ['common', 'cold'];
 
   const onClickAdd = () => {
     const item = {

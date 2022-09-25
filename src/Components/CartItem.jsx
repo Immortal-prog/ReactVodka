@@ -1,17 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDeletePizzas, setAddItem, minusItem } from '../redux/slices/CartSlice';
+import { setMinusItem, setAddItem, setPlusItem, setRemoveItem } from '../redux/slices/CartSlice';
 
 function CartItem({ id, imageUrl, title, type, size, count, price }) {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cartSlice.items);
 
-  const onClickPlus = () => {};
+  const onClickPlus = () => {
+    dispatch(setPlusItem({ id, type, size }));
+  };
 
-  const onClickMinus = () => {};
+  const onClickMinus = () => {
+    if (count < 2) {
+      onClickDelete();
+    } else {
+      dispatch(setMinusItem({ id, type, size }));
+    }
+  };
 
   const onClickDelete = () => {
     if (window.confirm('Ви впевнені, що хочете видалити піцу?')) {
+      dispatch(setRemoveItem({ id, size, type }));
     }
   };
 
