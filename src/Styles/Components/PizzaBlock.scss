@@ -1,12 +1,12 @@
 @import '../variables.scss';
 
-.pizza-block {
+.alcohol-block {
     
     text-align: center;
     margin-bottom: 65px;
 
     @media (max-width: 550px) {
-      .pizza-block {
+      .alcohol-block {
         &__image {
           width: 180px;
         }

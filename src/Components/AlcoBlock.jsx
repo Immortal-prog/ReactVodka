@@ -29,11 +29,11 @@ function AlcoBlock({ items }) {
   };
 
   return (
-    <div className="pizza-block-center">
-      <div className="pizza-block">
-        <img className="pizza-block__image" src={items.imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{items.name}</h4>
-        <div className="pizza-block__selector">
+    <div className="alcohol-block-center">
+      <div className="alcohol-block">
+        <img className="alcohol-block__image" src={items.imageUrl} alt="Alcohol" />
+        <h4 className="alcohol-block__title">{items.name}</h4>
+        <div className="alcohol-block__selector">
           <ul>
             {items.types.map((typeId, i) => (
               <li
@@ -55,8 +55,8 @@ function AlcoBlock({ items }) {
             ))}
           </ul>
         </div>
-        <div className="pizza-block__bottom">
-          <div className="pizza-block__price">{items.price[activeSize]} &#8372;</div>
+        <div className="alcohol-block__bottom">
+          <div className="alcohol-block__price">{items.price[activeSize]} &#8372;</div>
           <button onClick={onClickAdd} className="button button--outline button--add">
             <svg
               width="12"
