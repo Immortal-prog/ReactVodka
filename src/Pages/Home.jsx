@@ -56,8 +56,8 @@ function Home() {
   React.useEffect(() => {
     if (isMounted.current) {
       const params = {
-        categoryId: categoryId > 0 ? categoryId : null,
-        sortProperty: sort.sortProperty,
+        categoryId: categoryId > 0 ? categoryId : 0,
+        sortProp: sort.sortProp,
         currentPage,
       };
 
@@ -69,24 +69,24 @@ function Home() {
     if (window.location.search) {
       axiosItems();
     }
-  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+  }, [categoryId, sort.sortProp, searchValue, currentPage]);
 
   React.useEffect(() => {
     getItems();
-  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+  }, [categoryId, sort.sortProp, searchValue, currentPage]);
 
   // Парсим параметры при первом рендере
-  // React.useEffect(() => {
-  //   if (window.location.search) {
-  //     const params = qs.parse(window.location.search.substring(1));
-  //     const sort = sortList.find((obj) => obj.sortProperty === params.sortProperty);
-  //     if (sort) {
-  //       params.sort = sort;
-  //     }
-  //     dispatch(setFilters(params));
-  //   }
-  //   isMounted.current = true;
-  // }, []);
+  React.useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const sort = sortBy.find((obj) => obj.sortProp === params.sortProp);
+      if (sort) {
+        params.sort = sort;
+      }
+      dispatch(setFilters(params));
+    }
+    isMounted.current = true;
+  }, []);
 
   const pizzas = alcoholItems.map((pizzas, index) => <AlcoBlock key={index} items={pizzas} />);
 
