@@ -115,6 +115,51 @@ body {
 
 
 .cart {
+
+  @media (max-width: 550px) {
+    .cart__item-info h3 {
+      font-size: 17px;
+    }
+    .cart__item-info p {
+      font-size: 13px;
+    }
+    .alcohol-block__image {
+      width: 50px;
+      height: 50px;
+    }
+    .cart__item-count b{
+      font-size: 15px;
+    }
+    .cart__item-price b{
+      font-size: 15px;
+      width: 0 auto;
+    }
+    .cart__item-remove div{
+      min-width: 20px;
+      height: 20px;
+      width: 20px;
+    }
+    .cart__item-count button{
+      min-width: 20px;
+      height: 20px;
+      width: 20px;
+    }
+    .cart__clear span {
+      font-size: 10px;
+    }
+    .cart__top h2{
+      font-size: 22px;
+    }
+    .cart__bottom-details span {
+      font-size: 16px;
+    }
+    .cart__bottom-buttons a, div {
+      min-width: 60px;
+ 
+      
+    }
+}
+
     &__top {
       display: flex;
       justify-content: space-between;
@@ -183,6 +228,7 @@ body {
       border-top: 1px solid $gray-line;
       padding-top: 30px;
       margin-top: 30px;
+     
   
       &-img {
         display: flex;
@@ -195,12 +241,16 @@ body {
           height: 80px;
         }
       }
+
+      
+ 
   
       &-info {
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 40%;
+
   
         h3 {
           font-weight: bold;
@@ -346,9 +396,15 @@ body {
   
     &--empty {
       margin: 0 auto;
-      width: 560px;
+      // width: 560px;
       text-align: center;
-  
+   
+      @media(max-width: 400px) {
+        img {
+          width: 200px;
+        }
+      }
+     
       h2 {
         font-size: 32px;
         margin-bottom: 10px;
@@ -368,8 +424,11 @@ body {
   
       img {
         display: block;
-        width: 300px;
+        // width: 300px;
         margin: 45px auto 60px;
+
+      
+        
       }
   
       .button--black {
