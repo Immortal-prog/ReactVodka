@@ -119,21 +119,21 @@ body {
 
   @media (max-width: 550px) {
     .cart__item-info h3 {
-      font-size: 17px;
+      font-size: 15px;
     }
     .cart__item-info p {
       font-size: 13px;
     }
     .alcohol-block__image {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
     .cart__item-count b{
-      font-size: 15px;
+      font-size: 13px;
     }
     .cart__item-price b{
-      font-size: 15px;
-      width: 0 auto;
+      font-size: 13px;
+      
     }
     .cart__item-remove div{
       min-width: 20px;
@@ -141,9 +141,9 @@ body {
       width: 20px;
     }
     .cart__item-count button{
-      min-width: 20px;
-      height: 20px;
-      width: 20px;
+      min-width: 15px;
+      height: 15px;
+      width: 15px;
     }
     .cart__clear span {
       font-size: 10px;
@@ -152,14 +152,11 @@ body {
       font-size: 22px;
     }
     .cart__bottom-details span {
-      font-size: 16px;
+      font-size: 10px;
     }
-    .cart__bottom-buttons a, div {
-      min-width: 60px;
-    }
-    .Pagination_root__z7l4o li {
-      max-width: 43px;
-    }
+    // .cart__bottom-buttons a, div {
+    //   max-width: 40px;
+    // }
   
 }
 
