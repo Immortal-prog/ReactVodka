@@ -26,7 +26,7 @@ function CartItem({ id, imageUrl, title, type, size, count, price }) {
   return (
     <div className="cart__item">
       <div className="cart__item-img">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <img className="alcohol-block__image" src={imageUrl} alt="Alcohol" />
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>

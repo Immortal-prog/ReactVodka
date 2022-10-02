@@ -69,7 +69,7 @@ function AlcoBlock({ items }) {
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
+            <span>Додати</span>
             {adedCount > 0 && <i>{adedCount}</i>}
           </button>
         </div>

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Categories from '../Components/Categoties';
 import Sort from '../Components/Sort';
 import AlcoBlock from '../Components/AlcoBlock';
-import PizzaBlockSkeleton from '../Components/PizzaBlockSkeleton';
+import AlcoholBlockSkeleton from '../Components/AlcoholBlockSkeleton';
 import Pagination from '../Components/Pagination';
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 import { axiosItems } from '../redux/slices/responceSlice';
@@ -25,7 +25,6 @@ function Home() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
   const onClickCategory = (id) => {
@@ -40,7 +39,6 @@ function Home() {
     const order = `${sort.sortProp.includes('-') ? 'asc' : 'desc'}`;
     const search = searchValue ? `&search=${searchValue}` : '';
     const category = categoryId > 0 ? `category=${categoryId}` : '';
-    console.log(sort.sortProp);
     dispatch(
       axiosItems({
         order,
@@ -75,7 +73,6 @@ function Home() {
     getItems();
   }, [categoryId, sort.sortProp, searchValue, currentPage]);
 
-  // Парсим параметры при первом рендере
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
@@ -88,9 +85,9 @@ function Home() {
     isMounted.current = true;
   }, []);
 
-  const pizzas = alcoholItems.map((pizzas, index) => <AlcoBlock key={index} items={pizzas} />);
+  const alcohols = alcoholItems.map((alcohol, index) => <AlcoBlock key={index} items={alcohol} />);
 
-  const sceletons = [...new Array(8)].map((_, i) => <PizzaBlockSkeleton key={i} />);
+  const sceletons = [...new Array(8)].map((_, i) => <AlcoholBlockSkeleton key={i} />);
 
   return (
     <div className="container">
@@ -102,7 +99,7 @@ function Home() {
       {status === 'error' ? (
         <div>Помилка при завантаженні</div>
       ) : (
-        <div className="content__items">{status === 'loading' ? sceletons : pizzas}</div>
+        <div className="content__items">{status === 'loading' ? sceletons : alcohols}</div>
       )}
 
       <Pagination currentPage={currentPage} onChangepage={onChangePage} />

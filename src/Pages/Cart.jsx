@@ -55,7 +55,7 @@ function Cart() {
                 strokeLinejoin="round"
               />
             </svg>
-            Корзина
+            Кошик
           </h2>
           <div className="cart__clear">
             <svg
@@ -94,7 +94,7 @@ function Cart() {
               />
             </svg>
 
-            <span onClick={deleteCart}>Очистить корзину</span>
+            <span onClick={deleteCart}>Очистити кошик</span>
           </div>
         </div>
         <div className="content__items">

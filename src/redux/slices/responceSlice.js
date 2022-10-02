@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export const axiosItems = createAsyncThunk('alcohol/fetchItemsStatus', async (params) => {
   const { order, search, category, sort, currentPage } = params;
-  console.log(sort.sortProp);
   const { data } = await axios.get(
     `https://62dd5df1ccdf9f7ec2c5f699.mockapi.io/pizzas?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProp.replace(
       '-',
