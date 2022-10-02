@@ -1,5 +1,6 @@
 .root {
     li {
+   
         display: inline-block;
         a {
             border: 1px solid #fe5f1e;
@@ -15,19 +16,23 @@
         }
         
         }
-        @media(max-width: 400px) {
-            max-width: 100px;
-        }
+        @media (max-width: 400px){
+           max-width: 43px;
+            }
+        
     }
 
     :global {
         .selected {
+           
            a{
             background-color: #fe5f1e;
             color: #fff;
            } 
+        
         }
 
        }
     
-}
+    
+    }

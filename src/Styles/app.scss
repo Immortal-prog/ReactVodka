@@ -21,6 +21,7 @@ body {
 }
 
 .container {
+ 
     width: $container-width;
     margin: 0 auto;
     a {
@@ -155,9 +156,11 @@ body {
     }
     .cart__bottom-buttons a, div {
       min-width: 60px;
- 
-      
     }
+    .Pagination_root__z7l4o li {
+      max-width: 43px;
+    }
+  
 }
 
     &__top {
