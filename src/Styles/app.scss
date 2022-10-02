@@ -154,9 +154,11 @@ body {
     .cart__bottom-details span {
       font-size: 10px;
     }
-    // .cart__bottom-buttons a, div {
-    //   max-width: 40px;
-    // }
+    .cart__bottom-buttons {
+      a, div {
+        min-width: 50px;
+      }
+    }
   
 }
 
