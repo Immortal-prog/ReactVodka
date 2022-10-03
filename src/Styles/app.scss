@@ -13,11 +13,13 @@ body {
     @media(max-width: 650px) {
       .wrapper {
         margin: 30px;
+        width: auto;
       }
     }
     @media(max-width: 450px) {
       .wrapper {
         margin: 10px;
+        width: auto;
       }
     }
 }
