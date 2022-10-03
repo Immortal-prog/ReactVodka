@@ -9,6 +9,17 @@
 
 body {
     background-color: $black;
+
+    @media(max-width: 650px) {
+      .wrapper {
+        margin: 30px;
+      }
+    }
+    @media(max-width: 450px) {
+      .wrapper {
+        margin: 10px;
+      }
+    }
 }
 
 .wrapper {
@@ -18,6 +29,7 @@ body {
     margin: 50px auto;
     border-radius: 10px;
     max-width: 1400px;
+    
 }
 
 .container {
