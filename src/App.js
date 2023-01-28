@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import Home from './Pages/Home';
 import CartEmpty from './Pages/NotFound';
 import Cart from '../src/Pages/Cart';
+import DescriptionAlco from './Components/DescriptionAlco';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <Header />
       <div className="content">
         <Routes>
-          <Route path="" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/alcohol/:id" element={<DescriptionAlco />}></Route>
           <Route path="*" element={<CartEmpty />}></Route>
         </Routes>
       </div>

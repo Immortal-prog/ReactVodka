@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import vodkaLogo from '../assets/Img/vodka.png';
 import Search from './Search';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,8 @@ function Header() {
   const totalCount = items.reduce((count, obj) => {
     return count + obj.count;
   }, 0);
+
+  const location = useLocation();
 
   return (
     <div className="header">
@@ -23,9 +25,7 @@ function Header() {
             </div>
           </div>
         </Link>
-
-        <Search />
-
+        {location.pathname !== '/cart' && <Search />}
         <div className="header__cart">
           <Link to="./cart" className="button button--cart">
             <span>
